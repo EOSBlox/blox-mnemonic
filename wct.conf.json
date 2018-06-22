@@ -1,0 +1,18 @@
+{
+    "testTimeout": 600000,
+    "persistent": false,
+    "ttyOutput": false,
+    "verbose": true,
+    "expanded": false,
+    "plugins": {
+        "local": {
+            "browsers": ["chrome"],
+            "browserOptions": {
+                "chrome": [
+                    "no-sandbox",
+                    "headless"
+                ]
+            }
+        }
+    }
+}

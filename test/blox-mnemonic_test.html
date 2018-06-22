@@ -15,36 +15,31 @@
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <blox-mnemonic></blox-mnemonic>
+        <blox-mnemonic password="secret!!"></blox-mnemonic>
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <blox-mnemonic prop1="new-prop1"></blox-mnemonic>
-      </template>
-    </test-fixture>
 
     <script type="module">
       suite('blox-mnemonic', () => {
 
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'blox-mnemonic');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello blox-mnemonic!');
+        test('returns mnemonic seed with 128 charectors', () => {
+          const element = fixture('BasicTestFixture')
+          element.setAttribute('new', true)
+          assert.equal(element.seed.length, 128);
         });
 
-        test('setting a property on the element works', () => {
-          // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        test('sedd is falsy if no password ot new is not called', () => {
+          const element = fixture('BasicTestFixture')
+          assert.isNotOk(element.seed);
         });
 
+        test('returns a 12 word mnemonic', () => {
+          const element = fixture('BasicTestFixture')
+          element.setAttribute('new', true)
+          let words = element.mnemonic.split(' ').length
+          assert.equal(words, 12);
+        });
       });
     </script>
 
