@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/EOSBlox/blox-mnemonic.svg?branch=master)](https://travis-ci.org/EOSBlox/blox-mnemonic)
 
-A web component that generates a BIP39 mnemonic
+A web component that generates a BIP39 mnemonic seed and 12 word phrase
 
 ## Install the Polymer-CLI
 

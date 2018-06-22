@@ -2,7 +2,7 @@
     "testTimeout": 600000,
     "persistent": false,
     "ttyOutput": false,
-    "verbose": true,
+    "verbose": false,
     "expanded": false,
     "plugins": {
         "local": {
