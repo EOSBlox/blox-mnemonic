@@ -17,8 +17,6 @@ class BloxMnemonic extends PolymerElement {
           display: block;
         }
       </style>
-      {{error}}
-      {{seed}}
       <blox-scrypt 
         id="call" 
         password-length="{{passwordLength}}" 
