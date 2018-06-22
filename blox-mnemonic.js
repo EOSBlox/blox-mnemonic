@@ -67,6 +67,9 @@ class BloxMnemonic extends PolymerElement {
       .catch((err) => {
         this.error = err;
       })
+    } else {
+      this.mnemonic = '';
+      this.seed = '';
     }
   }
   _noPassword() {
