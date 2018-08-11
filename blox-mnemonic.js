@@ -22,6 +22,16 @@ class BloxMnemonic extends PolymerElement {
         password-length="{{passwordLength}}" 
         error="{{error}}">
       </blox-scrypt>
+
+      <template is="dom-if" if="{{debug}}">
+        <p>Password: <input id="password" type="password" name="password"></p>
+        <button type="button" on-click="_demo">Create Mnemonic</button>
+        <p>{{demoMnemonic}}</p>
+        <template is="dom-if" if="{{demoError}}">
+          <p> Error: {{demoError}}</p>
+        </template>
+      </template>
+      
     `;
   }
   static get properties() {
@@ -57,6 +67,10 @@ class BloxMnemonic extends PolymerElement {
         type: Boolean,
         value: false,
         observer: "_noPassword",
+      },
+      debug: {
+        type: Boolean,
+        value: false,
       }
     };
   }
@@ -106,6 +120,18 @@ class BloxMnemonic extends PolymerElement {
         reject('password length')
       }
     })
+  }
+
+  _demo(){
+    const password = this.shadowRoot.querySelector('#password').value;
+    this.mnemonicfromPassword(password)
+    .then((response) => {
+      this.demoMnemonic = response;
+    })
+    .catch((error) => {
+      this.demoError = error;
+    })
+    
   }
 
   constructor() {
